@@ -19,7 +19,7 @@ This program is a console application that performs various calculations related
 
 ## Example of Usage
 
-```bash
+```
 Choose an option:
 1) Euclidean Algorithm
 2) Additive Inverse
