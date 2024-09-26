@@ -5,9 +5,10 @@
 
 /**
  * @brief Main function to drive the program.
- * Allows the user to select from options related to Euclidean algorithm computations and inverse calculations.
- * It continuously displays a menu for the user to choose operations like finding the GCD, additive and multiplicative
- * inverses, and verifying these inverses until the user decides to exit.
+ * Allows the user to select from options related to Euclidean algorithm computations and inverse
+ * calculations. It continuously displays a menu for the user to choose operations like finding the
+ * GCD, additive and multiplicative inverses, and verifying these inverses until the user decides to
+ * exit.
  *
  * @param argc Number of command-line arguments.
  * @param argv Array of command-line arguments.
@@ -23,34 +24,36 @@ void euclideanAlgorithm();
 
 /**
  * @brief Computes and displays the additive inverse of a number in a specified modulo.
- * Prompts the user for the modulo and the number, then calculates and displays the additive inverse.
+ * Prompts the user for the modulo and the number, then calculates and displays the additive
+ * inverse.
  */
 void additiveInverse();
 
 /**
  * @brief Verifies if two elements are additive inverses in a specified modulo.
- * Prompts the user for the modulo and two elements, checks if their sum modulo the given number is zero,
- * and displays whether they are additive inverses.
+ * Prompts the user for the modulo and two elements, checks if their sum modulo the given number is
+ * zero, and displays whether they are additive inverses.
  */
 void verifyAdditiveInversePair();
 
 /**
  * @brief Computes and displays the multiplicative inverse of numbers in a specified modulo.
- * Iterates through all elements in the specified modulo, computes the multiplicative inverse for each, and displays
- * them.
+ * Iterates through all elements in the specified modulo, computes the multiplicative inverse for
+ * each, and displays them.
  */
 void multiplicativeInverse();
 
 /**
  * @brief Verifies if two elements are multiplicative inverses in a specified modulo.
- * Prompts the user for the modulo and two elements, checks if their product modulo the given number is one,
- * and displays whether they are multiplicative inverses.
+ * Prompts the user for the modulo and two elements, checks if their product modulo the given number
+ * is one, and displays whether they are multiplicative inverses.
  */
 void verifyMultiplicativeInversePair();
 
 /**
- * @brief Calculates the greatest common divisor (GCD) of two integers using the Extended Euclidean Algorithm.
- * It also determines the Bézout coefficients that satisfy the equation gcd(a, b) = as + bt.
+ * @brief Calculates the greatest common divisor (GCD) of two integers using the Extended Euclidean
+ * Algorithm. It also determines the Bézout coefficients that satisfy the equation gcd(a, b) = as +
+ * bt.
  *
  * @param a First integer.
  * @param b Second integer.
@@ -69,8 +72,9 @@ long bezoutCoefficients( long a, long b, long *x, long *y );
 long collectNumber();
 
 /**
- * @brief Calculates the greatest common divisor (GCD) of two integers using the Euclidean algorithm.
- * Recursively applies the Euclidean algorithm by swapping if necessary and finding the remainder until it reaches zero.
+ * @brief Calculates the greatest common divisor (GCD) of two integers using the Euclidean
+ * algorithm. Recursively applies the Euclidean algorithm by swapping if necessary and finding the
+ * remainder until it reaches zero.
  *
  * @param currentGCD Current GCD being calculated.
  * @param currentRemainder Current remainder in the calculation.
@@ -80,7 +84,8 @@ long findGCD( long currentGCD, long currentRemainder );
 
 /**
  * @brief Swaps two numbers if the first number is less than the second number.
- * Uses a temporary variable to swap the values of two numbers to ensure the first number is not less than the second.
+ * Uses a temporary variable to swap the values of two numbers to ensure the first number is not
+ * less than the second.
  *
  * @param firstNumber Reference to the first number.
  * @param secondNumber Reference to the second number.
@@ -142,7 +147,8 @@ void euclideanAlgorithm()
     printf( "Enter the second number: " );
     long secondNumber = collectNumber();
 
-    printf( "\ngcd(%ld, %ld) = %ld\n", firstNumber, secondNumber, findGCD( firstNumber, secondNumber ) );
+    printf( "\ngcd(%ld, %ld) = %ld\n", firstNumber, secondNumber,
+            findGCD( firstNumber, secondNumber ) );
 }
 
 void additiveInverse()
@@ -163,7 +169,8 @@ void verifyAdditiveInversePair()
     printf( "\nEnter Z_m: " );
     long Z_m = collectNumber();
 
-    printf( "The additive inverse relation between element A and B in Z_%ld will be verified.\n", Z_m );
+    printf( "The additive inverse relation between element A and B in Z_%ld will be verified.\n",
+            Z_m );
 
     printf( "Enter element A: " );
     long a = collectNumber();
@@ -175,12 +182,14 @@ void verifyAdditiveInversePair()
     long remainder = sum % Z_m;
 
     if ( remainder == 0 )
-        printf( "%ld and %ld are additive inverses of each other since [%ld + %ld] modulo %ld = %ld.\n", a, b, a, b,
-                Z_m, remainder );
+        printf(
+            "%ld and %ld are additive inverses of each other since [%ld + %ld] modulo %ld = %ld.\n",
+            a, b, a, b, Z_m, remainder );
 
     else
-        printf( "%ld and %ld are NOT additive inverses of each other because [%ld + %ld] modulo %ld = %ld, not 0.\n", a,
-                b, a, b, Z_m, remainder );
+        printf( "%ld and %ld are NOT additive inverses of each other because [%ld + %ld] modulo "
+                "%ld = %ld, not 0.\n",
+                a, b, a, b, Z_m, remainder );
 }
 
 long bezoutCoefficients( long a, long b, long *s, long *t )
@@ -212,7 +221,7 @@ void multiplicativeInverse()
     printf( "Elements in Z_%ld with multiplicative inverses:\n", Z_m );
     for ( long a = 1; a < Z_m; ++a )
     {
-        long s, t;                                       // Variables to store the Bézout coefficients
+        long s, t; // Variables to store the Bézout coefficients
         long gcd = bezoutCoefficients( a, Z_m, &s, &t ); // Compute GCD and coefficients
 
         if ( gcd == 1 )
@@ -224,9 +233,9 @@ void multiplicativeInverse()
             if ( s < 0 )
             {
                 printf( "\nBézout coefficients: s = %ld, t = %ld", s, t );
-                printf(
-                    "\nSince s is negative (s = %ld), we add %ld to s to\nget the positive multiplicative inverse.\n",
-                    s, Z_m );
+                printf( "\nSince s is negative (s = %ld), we add %ld to s to\nget the positive "
+                        "multiplicative inverse.\n",
+                        s, Z_m );
                 printf( "[%ld * (%ld + (%ld))] modulo %ld\n", a, Z_m, s, Z_m );
                 printf( "[%ld * %ld] modulo %ld\n", a, Z_m + s, Z_m );
                 printf( "[%ld] modulo %ld = 1\n", a * ( Z_m + s ), Z_m );
@@ -241,7 +250,8 @@ void multiplicativeInverse()
                 printf( "[%ld] modulo %ld = 1\n", a * s, Z_m );
             }
 
-            printf( "Element: %ld \t Multiplicative Inverse Modulo %ld: %ld\n", a, Z_m, multiplicativeInverse );
+            printf( "Element: %ld \t Multiplicative Inverse Modulo %ld: %ld\n", a, Z_m,
+                    multiplicativeInverse );
         }
     }
 }
@@ -251,7 +261,9 @@ void verifyMultiplicativeInversePair()
     printf( "\nEnter Z_m: " );
     long Z_m = collectNumber();
 
-    printf( "The multiplicative inverse relation between element A and B in Z_%ld will be verified.\n", Z_m );
+    printf(
+        "The multiplicative inverse relation between element A and B in Z_%ld will be verified.\n",
+        Z_m );
 
     printf( "Enter element A: " );
     long a = collectNumber();
@@ -263,13 +275,14 @@ void verifyMultiplicativeInversePair()
     long remainder = product % Z_m;
 
     if ( remainder == 1 )
-        printf( "%ld and %ld are multiplicative inverses of each other since [%ld * %ld] modulo %ld = %ld.\n", a, b, a,
-                b, Z_m, remainder );
+        printf( "%ld and %ld are multiplicative inverses of each other since [%ld * %ld] modulo "
+                "%ld = %ld.\n",
+                a, b, a, b, Z_m, remainder );
 
     else
-        printf(
-            "%ld and %ld are NOT multiplicative inverses of each other because [%ld * %ld] modulo %ld = %ld, not 1.\n",
-            a, b, a, b, Z_m, remainder );
+        printf( "%ld and %ld are NOT multiplicative inverses of each other because [%ld * %ld] "
+                "modulo %ld = %ld, not 1.\n",
+                a, b, a, b, Z_m, remainder );
 }
 
 long collectNumber()
@@ -285,7 +298,8 @@ long findGCD( long currentGCD, long currentRemainder )
 
     long remainder = currentGCD % currentRemainder;
     printf( "\ngcd(%ld, %ld)", currentGCD, currentRemainder );
-    printf( "\n%ld = %ld(%ld) + %ld\n", currentGCD, currentRemainder, currentGCD / currentRemainder, remainder );
+    printf( "\n%ld = %ld(%ld) + %ld\n", currentGCD, currentRemainder, currentGCD / currentRemainder,
+            remainder );
 
     while ( remainder != 0 )
     {
